@@ -12,9 +12,6 @@ public class GooglePage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-
-
-
     @FindBy(id = "APjFqb")
     public WebElement searchBox;
 

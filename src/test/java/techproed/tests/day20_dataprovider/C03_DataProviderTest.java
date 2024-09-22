@@ -13,14 +13,14 @@ public class C03_DataProviderTest {
 
 
 
-    @DataProvider
+    @DataProvider(name = "credentials")
     public static Object[][] credentials() {
-        ExcelReader excelReader = new ExcelReader("src/test/java/techproed/resources/adminTestData.xlsx","customer_info");
+        ExcelReader excelReader = new ExcelReader("src/test/java/techproed/resources/data_sheet.xlsx","customer_info");
         return new Object[][]{
                 {ConfigReader.getProperties("blueRentalEmail1"),ConfigReader.getProperties("blueRentalPassword1")},
                 {ConfigReader.getProperties("blueRentalEmail2"),ConfigReader.getProperties("blueRentalPassword2")},
                 {ConfigReader.getProperties("blueRentalEmail2"),ConfigReader.getProperties("blueRentalPassword2")},
-                {excelReader.getCellData(1,0),excelReader.getCellData(1,1)},
+               {excelReader.getCellData(1,0),excelReader.getCellData(1,1)},
                 {"ayhancan@bluerentalcars.com", "ayhan"},
                 {"beyhancan@bluerentalcars.com", "beyhan"},
                 {"johnson@bluerentalcars.com", "johnson"}
