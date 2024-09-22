@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="TechProed Batch 001">
+<suite name="Batch 001">
     <test name="Smoke Test">
         <packages>
             <package name="techproed.tests.smoke"></package>
@@ -7,4 +7,3 @@
         </packages>
     </test>
 </suite>
-

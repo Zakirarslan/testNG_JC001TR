@@ -8,80 +8,84 @@ import techproed.utilities.Driver;
 public class DemoPage {
 
     public DemoPage() {
-        PageFactory.initElements(Driver.getDriver(), this);
+        PageFactory.initElements(Driver.getDriver(),this);
     }
 
     @FindBy(xpath = "//input[@placeholder='First Name']")
     public WebElement firstName;
 
-    @FindBy(xpath = "//input[@type='email']")
+    @FindBy (xpath = "//input[@type='email']")
     public WebElement emailBox;
 
 
-    @FindBy(id = "imagesrc")
+    @FindBy (id = "imagesrc")
     public WebElement chooseFile;
 
-    @FindBy(xpath = "//input[@type='tel']")
+    @FindBy (xpath = "//input[@type='tel']")
     public WebElement phoneBox;
 
-    @FindBy(xpath = "//input[@value='Male']")
+    @FindBy (xpath = "//input[@value='FeMale']")
     public WebElement genderRadioButton;
 
-    @FindBy(id = "checkbox3")
+    @FindBy (id = "checkbox3")
     public WebElement checkBox3;
 
-    @FindBy(id = "checkbox2")
+    @FindBy (id = "checkbox2")
     public WebElement checkBox2;
 
-    @FindBy(id = "checkbox1")
+    @FindBy (id = "checkbox1")
     public WebElement checkBox1;
 
-    @FindBy(tagName = "multi-select")
+    @FindBy (tagName = "multi-select")
     public WebElement languageDropDownBox;
 
-    @FindBy(xpath = "//*[.='Turkish']")
+    @FindBy (xpath = "//*[.='Turkish']")
     public WebElement optionLanguageTurkish;
 
-    @FindBy(id = "Skills")
+    @FindBy (id = "Skills")
     public WebElement skillsDropDownBox;
 
-    @FindBy(id = "countries")
+    @FindBy (id = "countries")
     public WebElement countriesDropDownBox;
 
-    @FindBy(id = "country")
+    @FindBy (xpath = "//*[.='Select Country']")
+    public WebElement optionSelectCountry;
+
+    @FindBy (id = "select2-country-container")
     public WebElement selectCountryDropDownBox;
 
-    @FindBy(id = "yearbox")
-    public WebElement yearDropDownBox;
+    @FindBy (xpath = "//span[@title='Bangladesh']")
+    public WebElement optionBangladesh;
 
-    @FindBy(xpath = "//*[@ng-model='monthbox']")
-    public WebElement monthDropDownBox;
+    @FindBy (id = "yearbox")
+    public WebElement yearBox;
 
-    @FindBy(id = "daybox")
-    public WebElement dayDropDownBox;
+    @FindBy (xpath = "//select[@ng-model='monthbox']")
+    public WebElement monthBox;
 
-    @FindBy(id = "firstpassword")
+    @FindBy (id = "daybox")
+    public WebElement dayBox;
+
+    @FindBy (id = "firstpassword")
     public WebElement firstPasswordBox;
 
-    @FindBy(id = "secondpassword")
-    public WebElement confirmPasswordBox;
+    @FindBy (id = "secondpassword")
+    public WebElement secondPasswordBox;
 
-    @FindBy(id = "submitbtn")
+    @FindBy (id = "submitbtn")
     public WebElement submitButton;
 
-    @FindBy(id = "Button1")
-    public WebElement refreshButton;
 
 
 
- /*
---------------- fake mail sitesi-------------------
-  */
+    /*
+   --------------- fake mail sitesi-------------------
+     */
 
     //fake email sitesine ait zamandan kazanmak icin burada olusturduk
-    @FindBy(id = "email")
+    @FindBy (id = "email")
     public WebElement fakeEmail;
 
+
+
 }
-
-

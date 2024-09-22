@@ -7,8 +7,8 @@ import techproed.utilities.Driver;
 
 public class DataProviderPage {
 
-    public DataProviderPage() {
-        PageFactory.initElements(Driver.getDriver(),this);
+    public DataProviderPage(){
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
     @FindBy(id = "age")
@@ -19,11 +19,5 @@ public class DataProviderPage {
 
     @FindBy(id = "result")
     public WebElement resultText;
-
-
-
-
-
-
 
 }

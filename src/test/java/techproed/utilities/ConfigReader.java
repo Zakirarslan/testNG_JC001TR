@@ -6,21 +6,25 @@ import java.util.Properties;
 
 public class ConfigReader {
 
-    public static String getProperties(String key){
+    public static String getProperty(String key){
 
         Properties properties = new Properties();
 
         try {
             FileInputStream fis = new FileInputStream("configuration.properties");
-            properties.load(fis);
+            properties.load(fis); //data akışını objeye yükledik
         } catch (IOException e) {
             throw new RuntimeException(e);
+
         }
         return properties.getProperty(key);
     }
 
-    /*
+     /*
     Bu method icinde olusturdugumuz Properties objectine key verdigimiz zaman
-    bize vermis oldugumuz key in configuration.properties dosyasindaki value sunu return edecek
+    bize vermis oldugumuz key in configuration.properties dosyasindaki value sunu
+    return edecek
      */
+
+
 }

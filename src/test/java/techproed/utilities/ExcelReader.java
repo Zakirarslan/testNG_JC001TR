@@ -13,26 +13,27 @@ public class ExcelReader {
     Workbook workbook;
     Sheet sheet;
 
-    public ExcelReader(String filePath, String sheetName) {
-
+    //excel objelerinin beynine, okumak istediğim excel bilgilerini yüklüyoruz
+    public ExcelReader(String dosyaYolu, String sayfaIsmi) {  //constructor, classta bir obje oluşturulduğunda çalışan yerdir.
         try {
-            FileInputStream fileInputStream = new FileInputStream(filePath);
-            workbook = WorkbookFactory.create(fileInputStream);
-            sheet = workbook.getSheet(sheetName);
+
+            FileInputStream fis = new FileInputStream(dosyaYolu);
+            workbook = WorkbookFactory.create(fis);
+            sheet = workbook.getSheet(sayfaIsmi);
+
         } catch (IOException e) {
+
             throw new RuntimeException(e);
         }
-
     }
 
-    public String getCellData(int rowNumber, int cellNumber) {
-        Cell cell = sheet.getRow(rowNumber).getCell(cellNumber);
+    public String getCellData(int satir, int sutun){
+        Cell cell = sheet.getRow(satir).getCell(sutun);
         return cell.toString();
     }
 
-    public int rowCount() {
+    public int rowCount(){
         return sheet.getLastRowNum();
-
     }
 
 

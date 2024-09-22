@@ -3,7 +3,6 @@ package techproed.tests.day17_annotations;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -15,24 +14,24 @@ public class C03_Priority {
 
     @BeforeMethod
     public void setUp(){
-        driver = new ChromeDriver();
+        driver=new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
     }
 
-    @Test//(priority = 0) ->default
+    @Test //(priority = 0)
     public void test01() {
-        driver.get("https://www.youtube.com");
+        driver.get("https://youtube.com");
     }
 
-    @Test(priority = 2)
+    @Test(priority = 2) //bu test en son çalşsın
     public void test02() {
-        driver.get("https://www.google.com");
+        driver.get("https://facebook.com");
     }
 
-    @Test(priority = -1)
+    @Test(priority = -1)  //bu test ilk çalışsın
     public void test03() {
-        driver.get("https://www.linkedin.com");
+        driver.get("https://amazon.com");
     }
 
     @AfterMethod

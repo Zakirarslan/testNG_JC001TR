@@ -11,36 +11,27 @@ public class PasswordStrength {
     MedunnaPage medunnaPage = new MedunnaPage();
 
     @Test
-    public void testPasswordStrength() {
-        Driver.getDriver().get(ConfigReader.getProperties("medunnaUrl"));
+    public void test01() {
+        Driver.getDriver().get(ConfigReader.getProperty("medunnaUrl"));
 
-        medunnaPage.accountMenuDropDown.click();
+        medunnaPage.accountMenuButton.click();
         medunnaPage.registerButton.click();
 
-        medunnaPage.firstPasswordTextBox.sendKeys("abcd");
-
-        Assert.assertTrue(medunnaPage.passwordStrengthRed.isDisplayed(),"Error");
-
-        ReusableMethods.waitForSecond(2);
-
-        medunnaPage.firstPasswordTextBox.sendKeys("123");
-
-        Assert.assertTrue(medunnaPage.passwordStrengthOrange.isDisplayed(),"Error");
+        medunnaPage.password1TextBox.sendKeys("abcd");
+        Assert.assertTrue(medunnaPage.passwordStrengthRed.isDisplayed(), "HATA");
 
         ReusableMethods.waitForSecond(2);
 
-        medunnaPage.firstPasswordTextBox.sendKeys("+");
-
-        Assert.assertTrue(medunnaPage.passwordStrengthGreen1.isDisplayed(),"Error");
+        medunnaPage.password1TextBox.sendKeys("123");
+        Assert.assertTrue(medunnaPage.passwordStrengthOrange.isDisplayed(), "HATA");
 
         ReusableMethods.waitForSecond(2);
+        medunnaPage.password1TextBox.sendKeys("+");
+        Assert.assertTrue(medunnaPage.passwordStrengthGreen1.isDisplayed(), "HATA");
 
-        medunnaPage.firstPasswordTextBox.sendKeys("ABC");
-
-        Assert.assertTrue(medunnaPage.passwordStrengthGreen2.isDisplayed(),"Error");
-
-
-        Driver.closeDriver();
+        ReusableMethods.waitForSecond(2);
+        medunnaPage.password1TextBox.sendKeys("B");
+        Assert.assertTrue(medunnaPage.passwordStrengthGreen2.isDisplayed(), "HATA");
 
     }
 }

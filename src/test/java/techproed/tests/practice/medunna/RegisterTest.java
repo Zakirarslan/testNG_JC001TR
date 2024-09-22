@@ -11,32 +11,41 @@ import techproed.utilities.ReusableMethods;
 
 public class RegisterTest {
 
+    MedunnaPage medunnaPage = new MedunnaPage();
+    Faker faker = new Faker();
 
-    @Test(description = "US02 - Kullanici gecerli fake data'lar ile register olabilmeli")
-    public void testMedunnaRegister() {
-        MedunnaPage medunnaPage = new MedunnaPage();
-        Faker faker = new Faker();
+    @Test
+    public void registerTest() {
+        Driver.getDriver().get(ConfigReader.getProperty("medunnaUrl"));
 
-        Driver.getDriver().get(ConfigReader.getProperties("medunnaUrl"));
-
-        medunnaPage.accountMenuDropDown.click();
+        medunnaPage.accountMenuButton.click();
         medunnaPage.registerButton.click();
 
+        //SSN
         medunnaPage.ssnTextBox.sendKeys(faker.idNumber().ssnValid());
-        medunnaPage.firstNameTextBox.sendKeys(faker.name().firstName());
-        medunnaPage.lastNameTextBox.sendKeys(faker.name().lastName());
-        medunnaPage.userNameTextBox.sendKeys(faker.name().username());
+
+        //first name
+        String firstName = faker.name().firstName();
+        medunnaPage.firstNameTextBox.sendKeys(firstName);
+
+        //last name
+        String lastName = faker.name().lastName();
+        medunnaPage.lastNameTextBox.sendKeys(lastName);
+
+        //user name _ full name
+        String username = firstName + lastName;
+        medunnaPage.userNameTextBox.sendKeys(username);
+
+        //email
         medunnaPage.emailTextBox.sendKeys(faker.internet().emailAddress());
 
-        String password = faker.internet().password(10, 15, true, true, true);
+        //password
+        String password = faker.internet().password(8,12,true, true, true);
+        medunnaPage.password1TextBox.sendKeys(password);
 
-        medunnaPage.firstPasswordTextBox.sendKeys(password);
-        medunnaPage.secondPasswordTextBox.sendKeys(password);
+        //confirm password
+        medunnaPage.password2TextBox.sendKeys(password, Keys.ENTER);
 
-        ReusableMethods.scrollEnd();
-        ReusableMethods.waitForSecond(2);
-
-        medunnaPage.registerSubmitButton.click();
 
         ReusableMethods.visibleWait(medunnaPage.registrationSavedText, 10);
 
@@ -46,14 +55,13 @@ public class RegisterTest {
 
     }
 
+
     @Test
-    public void testMedunnaRegister2() {
-        MedunnaPage medunnaPage = new MedunnaPage();
-        Faker faker = new Faker();
+    public void test02() {
 
-        Driver.getDriver().get(ConfigReader.getProperties("medunnaUrl"));
+        Driver.getDriver().get(ConfigReader.getProperty("medunnaUrl"));
 
-        medunnaPage.accountMenuDropDown.click();
+        medunnaPage.accountMenuButton.click();
         medunnaPage.registerButton.click();
 
         String password = faker.internet().password(10, 15, true, true, true);
@@ -73,43 +81,6 @@ public class RegisterTest {
                 password,
                 Keys.TAB,
                 Keys.ENTER);
-
-        ReusableMethods.visibleWait(medunnaPage.registrationSavedText, 10);
-
-        Assert.assertTrue(medunnaPage.registrationSavedText.isDisplayed());
-
-        Driver.closeDriver();
-
-    }
-
-    @Test(description = "US02 - Kullanici gecerli fake data'lar ile register olabilmeli")
-    public void testMedunnaRegister3() {
-        MedunnaPage medunnaPage = new MedunnaPage();
-        Faker faker = new Faker();
-
-        Driver.getDriver().get(ConfigReader.getProperties("medunnaUrl"));
-
-        medunnaPage.accountMenuDropDown.click();
-        medunnaPage.registerButton.click();
-
-        medunnaPage.ssnTextBox.sendKeys(faker.idNumber().ssnValid());
-
-        String firstName = faker.name().firstName();
-        medunnaPage.firstNameTextBox.sendKeys(firstName);
-
-        String lastName = faker.name().lastName();
-        medunnaPage.lastNameTextBox.sendKeys(lastName);
-
-        String username = firstName + lastName;
-        medunnaPage.userNameTextBox.sendKeys(username);
-
-        medunnaPage.emailTextBox.sendKeys(faker.internet().emailAddress());
-
-        String password = faker.internet().password(8, 12, true, true, true);
-
-        medunnaPage.firstPasswordTextBox.sendKeys(password);
-        medunnaPage.secondPasswordTextBox.sendKeys(password,Keys.ENTER);
-
 
         ReusableMethods.visibleWait(medunnaPage.registrationSavedText, 10);
 

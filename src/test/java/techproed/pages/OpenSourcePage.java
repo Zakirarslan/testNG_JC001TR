@@ -8,7 +8,7 @@ import techproed.utilities.Driver;
 public class OpenSourcePage {
 
     public OpenSourcePage() {
-        PageFactory.initElements(Driver.getDriver(),this);
+        PageFactory.initElements(Driver.getDriver(), this); //driverı, bu classtaki öğeler ile ilişkilendirmiş olduk
     }
 
     @FindBy(name = "username")
@@ -21,6 +21,7 @@ public class OpenSourcePage {
     public WebElement loginButton;
 
     @FindBy(tagName = "h6")
-    public WebElement dashboard;
+    public WebElement dashBoard;
+
 
 }

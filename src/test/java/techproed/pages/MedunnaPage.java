@@ -7,60 +7,66 @@ import techproed.utilities.Driver;
 
 public class MedunnaPage {
 
-
-    public MedunnaPage() {
-        PageFactory.initElements(Driver.getDriver(),this);
+    public MedunnaPage(){
+        PageFactory.initElements(Driver.getDriver(), this);
+        //bu constructor, bu classtaki objeleri, web elementleri, notasyonları; objeler ile ilişkilendirecek
     }
 
-    /////////////// --  Login Page -- /////////////////////
+
+
+    //------------------------login page
     @FindBy(id = "account-menu")
-    public WebElement accountMenuDropDown;
-
-
-    @FindBy(id = "password")
-    public WebElement passwordBox;
-
-    @FindBy(xpath = "//span[.='Admin Batch210']")
-    public WebElement loginVerify;
+    public WebElement accountMenuButton;
 
     @FindBy(id = "login-item")
     public WebElement loginButton;
 
-    /////////////// --  Register Page -- /////////////////////
+    @FindBy(id = "username")
+    public WebElement userNameBox;
+
+    @FindBy(id = "password")
+    public WebElement passwordBox;
 
     @FindBy(xpath = "//*[.='Register']")
     public WebElement registerButton;
 
-    @FindBy(id = "ssn")
-    public WebElement ssnTextBox;
+    @FindBy(xpath = "//span[.='Admin Batch210']")
+    public WebElement loginVerify;
 
-    @FindBy(id = "firstName")
+
+
+
+
+    //--------------------register page
+
+     @FindBy(id= "ssn")
+     public WebElement ssnTextBox;
+    @FindBy (css= "#firstName")
     public WebElement firstNameTextBox;
 
-    @FindBy(id = "lastName")
+    @FindBy (css= "#lastName")
     public WebElement lastNameTextBox;
 
-    @FindBy(id = "username")
+    @FindBy (css= "#username")
     public WebElement userNameTextBox;
 
-
-    @FindBy(id = "email")
+    @FindBy (css= "#email")
     public WebElement emailTextBox;
 
+    @FindBy (css= "input[name='firstPassword']")
+    public WebElement password1TextBox;
 
-    @FindBy(id = "firstPassword")
-    public WebElement firstPasswordTextBox;
+    @FindBy (css= "#secondPassword")
+    public WebElement password2TextBox;
 
-    @FindBy(id = "secondPassword")
-    public WebElement secondPasswordTextBox;
-
-    @FindBy(id = "register-submit")
-    public WebElement registerSubmitButton;
+    @FindBy (css= "#register-submit")
+    public WebElement registerButton2;
 
     @FindBy(xpath = "//*[.='Registration Saved']")
     public WebElement registrationSavedText;
 
-    ////////////////// -- Password Strength -- //////////////////////
+
+    //---------------------------------password strength
 
     @FindBy (xpath = "//li[@style='background-color: rgb(255, 0, 0);']")
     public WebElement passwordStrengthRed;
@@ -73,5 +79,13 @@ public class MedunnaPage {
 
     @FindBy (xpath = "//li[@style='background-color: rgb(0, 255, 0);']")
     public WebElement passwordStrengthGreen2;
+
+
+
+
+
+
+
+
 
 }

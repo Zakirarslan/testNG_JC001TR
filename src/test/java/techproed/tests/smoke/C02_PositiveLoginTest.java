@@ -3,7 +3,7 @@ package techproed.tests.smoke;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import techproed.pages.BlueRentalCarPage;
+import techproed.pages.BlueRentalPage;
 import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
 
@@ -18,35 +18,29 @@ public class C02_PositiveLoginTest {
     //password: 12345
     //https://www.bluerentalcars.com/
 
-    //Name: US100201_Admin_Login
-    //Description:
-    //Admin bilgileriyle giriş
-    //Acceptance Criteria:
-    //Admin olarak, uygulamaya giriş yapabilmeliyim
-    //email : ada@ada.com
-    //password: 12345
-    //https://www.bluerentalcars.com/
-    @Test
-    public void test01() { // Bu test hem POSITIVE TEST hem SMOKE TEST
 
-        //Name: US01_Admin_Login
-        //Description: Admin bilgileriyle giriş
-        //Acceptance Criteria:
+
+    //Name: US01_Admin_Login
+
+    //Description: Admin bilgileriyle giriş
+
+    //Acceptance Criteria:
         //Admin olarak, uygulamaya giriş yapabilmeliyim
         //email : ada@ada.com
         //password: 12345
         //https://www.bluerentalcars.com/
 
-        Driver.getDriver().get(ConfigReader.getProperties("blueRentalCarUrl"));
-        BlueRentalCarPage blueRentalCarPage = new BlueRentalCarPage();
-        blueRentalCarPage.loginButton.click();
-        blueRentalCarPage.emailBox.sendKeys(ConfigReader.getProperties("blueRentalEmail"));
-        blueRentalCarPage.passwordBox.sendKeys(ConfigReader.getProperties("blueRentalPassword"), Keys.ENTER);
+    //BU TEST, HEM POSITIVE TEST, HEM DE SMOKE TESTTİR.
 
-        Assert.assertTrue(blueRentalCarPage.dropDownMenu.isDisplayed());
+    @Test
+    public void test01() {
+        Driver.getDriver().get(ConfigReader.getProperty("blueRentalCarUrl"));
+        BlueRentalPage blueRentalPage = new BlueRentalPage();
+        blueRentalPage.loginButton.click();
+        blueRentalPage.email.sendKeys(ConfigReader.getProperty("blueRentalEmail"));
+        blueRentalPage.password.sendKeys(ConfigReader.getProperty("blueRentalPassword"), Keys.ENTER);
 
-        Driver.closeDriver();
-
+        Assert.assertTrue(blueRentalPage.dropDownMenuVerify.isDisplayed());
 
     }
 }
